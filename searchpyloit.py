@@ -1,6 +1,10 @@
 import subprocess
+import sys
 
-search = input("Search for: ")
+if len(sys.argv) == 1: 
+    print("Missing arugment. Exiting.")
+    sys.exit()
+search = sys.argv[1] 
 output = subprocess.check_output(f"searchsploit {search}", shell=True).decode("utf-8")
  
 output = [(x.split("|")) for x in output.split("\n")[3:-3]]
